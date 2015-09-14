@@ -13,6 +13,7 @@
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
+    "gulp-haml": "^0.1.5",
     "gulp-htmlmin": "^1.1.4",
     "gulp-imagemin": "^2.3.0",
     "gulp-livereload": "^3.8.0",

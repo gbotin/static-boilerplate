@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var del = require('del');
 var concat = require('gulp-concat');
+var haml = require('gulp-haml');
 var watch = require('gulp-watch');
 var imagemin = require('gulp-imagemin');
 var sourcemaps = require('gulp-sourcemaps');
@@ -47,9 +48,9 @@ gulp.task("fonts", function () {
     .pipe(gulp.dest('dist/fonts'));
 });
 
-gulp.task("html", function () {
-  gulp.src("src/**/*.html")
-    .pipe(htmlmin({collapseWhitespace: true}))
+gulp.task("haml", function () {
+  gulp.src("src/**/*.haml")
+    .pipe(haml())
     .pipe(gulp.dest('dist/'));
 });
 
@@ -76,6 +77,6 @@ gulp.task("watch", function () {
   });
 });
 
-gulp.task("build", ["style", "scripts", "bower", "fonts", "html", "images"]);
+gulp.task("build", ["style", "scripts", "bower", "fonts", "haml", "images"]);
 
 gulp.task("default", ["build", "serve", "watch"]);
