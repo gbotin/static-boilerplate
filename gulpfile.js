@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var del = require('del');
 var concat = require('gulp-concat');
 var haml = require('gulp-haml');
+var coffee = require('gulp-coffee');
 var watch = require('gulp-watch');
 var imagemin = require('gulp-imagemin');
 var sourcemaps = require('gulp-sourcemaps');
@@ -28,7 +29,8 @@ gulp.task("style", function () {
 });
 
 gulp.task("scripts", function () {
-  gulp.src("src/scripts/**/*.js")
+  gulp.src("src/scripts/**/*.coffee")
+    .pipe(coffee({bare: true}))
     .pipe(concat('app.js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.init())
@@ -68,9 +70,9 @@ gulp.task("serve", function () {
 gulp.task("watch", function () {
   livereload.listen();
 
-  gulp.watch("src/**/*.js", ["scripts"]);
+  gulp.watch("src/**/*.coffee", ["scripts"]);
   gulp.watch("src/**/*.{sass,scss}", ["style"]);
-  gulp.watch("src/**/*.html", ["html"]);
+  gulp.watch("src/**/*.haml", ["html"]);
 
   gulp.watch("dist/**/*", function (file) {
     livereload.changed(file.path);
