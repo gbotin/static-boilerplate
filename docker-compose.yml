@@ -1,0 +1,10 @@
+app:
+  build: .
+  command: gulp
+  tty: true
+  volumes:
+    - ./build:/app/build
+    - ./src:/app/src
+  ports:
+    - 3000:3000   # express
+    - 35729:35729 # livereload

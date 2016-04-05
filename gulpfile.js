@@ -107,9 +107,7 @@ function bundle(opts) {
 
   bundler.on('update', rebundle);
 
-  if (!opts.watch) {
-    return rebundle();
-  }
+  return rebundle();
 }
 
 gulp.task("compile:scripts", function () {
